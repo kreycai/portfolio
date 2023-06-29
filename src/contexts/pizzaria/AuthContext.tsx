@@ -98,7 +98,11 @@ export function AuthProvider({children}: AuthProviderProps){
 
             //passar para proximas requisições o token
             api.defaults.headers['Authorization'] = `Bearer ${token}`
-
+            const socket = io('https://api-portfolio-v3zq.onrender.com');
+            setSocket(socket)
+            if(socket){
+                setIsConnected(true)
+            }
             toast.success("Logado com sucesso!")
 
             //redirecionar o user para /dashboard

@@ -48,6 +48,7 @@ export default function Dashboard(props) {
   const apiClient = setupApiClient();
   
 useEffect(()=>{
+
     //essa funçao cuida de atualizar o client que cria um pedido e que acaba de ser
     //redirecionado para /dashboard. Pois o socket.io e o SSR(que esta no layout) nao o fazem
     async function refreshAfterSocket(){
