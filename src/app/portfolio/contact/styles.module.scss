@@ -1,0 +1,88 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: calc(100vw - 80px);
+    padding: 2rem 2rem;
+    align-items: center;
+    justify-content: center;
+    h1{
+        font-size: 2rem;
+        padding-top: 0.5rem;
+        padding-bottom: 1rem;
+    }
+
+}
+
+.subContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    min-width: 300px;
+    padding: 1rem;
+    p{
+        font-size: 1.6rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    article{
+        padding-top: 0.3rem;
+    }
+}
+
+.contatoButton{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 0;
+    border-radius: 0.5rem;
+    width: 400px;
+    min-width: 300px;
+    margin: 0.5rem;
+    padding: 1rem;
+    box-shadow: 2px 2px 2px 1px #288333;
+    background-color: #43D954;
+    transition: all 0.2s ease-in-out;
+    span{
+        text-align: center;
+        font-size: 1.4rem;
+        margin: 0;
+    }
+
+    &:hover{
+        position: relative;
+        right: -2px;
+        bottom: -2px;
+        box-shadow: 0px 0px 0px 0px #288333;
+        background-color: #43D954;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container{
+        h1{
+            font-size: 2rem;
+        }
+    }
+    
+    .subContainer{
+        width: 70%;
+        min-width: 300px;
+        p{
+            font-size: 1.6rem;
+        }
+        article{
+            font-size: 0.7rem;
+        }
+    }
+    
+    .contatoButton{
+        width: 280px;
+        min-width: auto;
+
+        span{
+            font-size: 1.2rem;
+        }
+    }
+}

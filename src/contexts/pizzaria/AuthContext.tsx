@@ -1,10 +1,13 @@
+'use client'
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { api } from "../../services/pizzaria/apiClient";
-import { destroyCookie, setCookie, parseCookies } from 'nookies'
-import Router from 'next/router'
-import { toast } from 'react-toastify'
+import { destroyCookie, setCookie, parseCookies } from 'nookies';
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 import { Socket } from 'socket.io-client';
 import io from 'socket.io-client';
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 type AuthContextData = {
@@ -42,8 +45,9 @@ export const AuthContext = createContext({} as AuthContextData)
 
 export function signOut(){
     try {
-        destroyCookie(undefined, '@nextauth.token')
-        Router.push('/')
+        destroyCookie(null, '@nextauth.token', {
+            path: '/',
+          })
     } catch {
         console.log('Erro ao deslogar');
     }
@@ -54,7 +58,7 @@ export function AuthProvider({children}: AuthProviderProps){
     const [ socket, setSocket ] = useState(null)
     const [user, setUser] = useState<UserProps>()
     const isAuthenticated = !!user;
-
+    const router = useRouter()
     useEffect(()=>{
         //tentar pegar algo no cookie
         const { '@nextauth.token': token} = parseCookies();
@@ -62,7 +66,7 @@ export function AuthProvider({children}: AuthProviderProps){
             api.get('/me').then(response=>{
                 const {id, name, email} = response.data
                 setUser({id, name, email})
-                const socket = io('http://localhost:3333');
+                const socket = io('https://api-portfolio-v3zq.onrender.com');
                 setSocket(socket)
                 if(socket){
                     setIsConnected(true)
@@ -73,6 +77,8 @@ export function AuthProvider({children}: AuthProviderProps){
             })
         }
     }, [])
+
+
 
     async function signIn({email, password}: SignInProps){
         try {
@@ -96,7 +102,9 @@ export function AuthProvider({children}: AuthProviderProps){
             toast.success("Logado com sucesso!")
 
             //redirecionar o user para /dashboard
-            Router.push('/dashboard')
+            console.log('fez login');
+            
+            router.push('/pizzaria/dashboard')
             return name;
 
         } catch (err) {
@@ -115,7 +123,7 @@ export function AuthProvider({children}: AuthProviderProps){
 
             toast.success("Conta criada com sucesso!");
             
-            Router.push('/')
+            router.push('/pizzaria/login')
         } catch (err) {
             toast.error("Erro ao cadastrar")
             console.log("Erro ao cadastrar", err);
@@ -127,6 +135,7 @@ export function AuthProvider({children}: AuthProviderProps){
     return (
         <AuthContext.Provider value={{user, isAuthenticated, signIn, signOut, signUp, socket, isConnected}}>
             {children}
+            <ToastContainer autoClose={3000} />
         </AuthContext.Provider>
     )
 }
