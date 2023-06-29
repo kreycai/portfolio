@@ -62,27 +62,27 @@
 @media screen and (max-width: 767px) {
     .container{
         h1{
-            font-size: 2rem;
+            font-size: 1.6rem;
         }
     }
     
     .subContainer{
-        width: 70%;
-        min-width: 300px;
+        width: 120%;
+        min-width: 0;
         p{
-            font-size: 1.6rem;
+            font-size: 1.3rem;
         }
         article{
-            font-size: 0.7rem;
+            font-size: 0.6rem;
         }
     }
     
     .contatoButton{
-        width: 280px;
+        width: 100%;
         min-width: auto;
 
         span{
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
     }
 }

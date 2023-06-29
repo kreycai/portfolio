@@ -8,6 +8,7 @@
     align-items: center;
 
     h1{
+        text-align: center;
         font-size: 2rem;
         padding-top: 0.5rem;
         padding-bottom: 1.5rem;
@@ -142,8 +143,8 @@
         align-items: center;
         justify-content: center;
         // margin-top: 3.8rem;
-        min-width: 290px;
-        height: 290px;
+        min-width: 270px;
+        height: 270px;
         z-index: 9;
         margin-right: 0;
         margin-bottom: 2rem;
@@ -157,5 +158,21 @@
     }
     .cards{
         flex-direction: column;
+    }
+    .card{
+        min-width: 210px;
+        width: 250px;
+        height: 150px;
+        display: flex;
+        margin: 0.5rem;
+        justify-content: center;
+        align-items: center;
+        z-index: 0;
+        box-shadow: 2px 2px 5px 2px #dadada;
+        border-radius: 0.5rem;
+        h3{
+            font-size: 1.9rem;
+            color: #fcfcfc;
+        }
     }
 }
