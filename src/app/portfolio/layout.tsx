@@ -20,8 +20,6 @@ export default function PortLayout({children}: PortLayoutProps) {
     <div>
       <div className={styles.container}>
         <div className={styles.menus}>
-
-
         <div className={styles.topMenu}>
           <div className={styles.button}>
             <Link href='https://www.linkedin.com/in/guilherme-reale-374615206/' target="_blank" className={styles.link1}>

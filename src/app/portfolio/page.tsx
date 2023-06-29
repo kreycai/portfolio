@@ -51,7 +51,7 @@ export default function Portfolio(){
           <h3>Film Flix</h3>
         </Link>
         <div className={styles.card}>
-   
+          <h2 style={{color:'black'}}>Em breve...</h2>
         </div>
       </div>
       <footer className={styles.footer}>
