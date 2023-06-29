@@ -8,7 +8,8 @@
 
 .menus{
     width: 80px;
-    height: 100%;
+    height: calc(100vh);
+    // height: calc(100vh + 30px) ;
     position: fixed;
     z-index: 20;
     display: flex;
