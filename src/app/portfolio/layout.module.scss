@@ -8,7 +8,7 @@
 
 .menus{
     width: 80px;
-    height: calc(100vh);
+    height: 100vh;
     // height: calc(100vh + 30px) ;
     position: fixed;
     z-index: 20;
@@ -145,6 +145,7 @@
 
 .page{
     display: flex;
+    // height: 100%;
     padding-left: 80px;
     justify-content: center;
     align-items: center;
