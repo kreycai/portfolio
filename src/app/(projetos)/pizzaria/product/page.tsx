@@ -18,12 +18,8 @@ type ItemProps = {
 interface CategoryProps{
     categoryList: ItemProps[],
 }
-interface PortLayoutProps{
-    children: ReactNode,
-    params: any
-  }
 
-export default function Product(props: PortLayoutProps){
+export default function Product(props){
 
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')

@@ -32,13 +32,13 @@ export default function PortPizzaria(){
           </p>
           <p>
             Front-end: 
-            Criado com Next 13(web) e React Native(mobile), o front-end utiliza de algumas outras bibliotecas como 'react toastify' para exibir
-            alertas personalizados após realizar algumas ações, 'nookies' para trabalhar com os cookies, 'jwt' para descriptografia
-            e 'axios' para chamadas ao back-end, além do ja citado socket.io para comunicação em tempo real com servidor.
+            Criado com Next 13(web) e React Native(mobile), o front-end utiliza de algumas outras bibliotecas como react toastify para exibir
+            alertas personalizados após realizar algumas ações, nookies para trabalhar com os cookies, jwt para descriptografia
+            e axios para chamadas ao back-end, além do ja citado socket.io para comunicação em tempo real com servidor.
           </p>
           <p>
-            Back-end: O back-end em Node.js foi criado utilizando 'Express.js' e 'Typescript', além de algumas bibliotecas como 'jwt' 
-            e 'bcrypt' para criptografia. O banco de dados optei por 'postgreSQL' e a ORM 'Prisma'.
+            Back-end: O back-end em Node.js foi criado utilizando Express.js e Typescript, além de algumas bibliotecas como jwt 
+            e bcrypt para criptografia. O banco de dados optei por postgreSQL e a ORM Prisma.
           </p>
           <p>Existe uma explicação simples sobre cada pagina nos cards abaixo, e uma explicação mais técnica após os cards.</p>
           <p style={{fontWeight:'bold'}}>No fim da pagina você confere o app mobile</p>
@@ -88,7 +88,7 @@ export default function PortPizzaria(){
               ou não efetuar o login e devolve um alerta personalizado com a informação que, se positiva, 
               devolve um token.
               Possui tambem um sistema server-side que, antes da pagina ser renderizada, verifica se existe um token e se ele é valido, se positivo 
-              a pagina não é renderizada e o cliente é redirecionado para a pagina 'dashboard', mas, caso o cliente tenha forjado um token 
+              a pagina não é renderizada e o cliente é redirecionado para a pagina dashboard, mas, caso o cliente tenha forjado um token 
               o back-end devolve um erro e o cliente redireciona o usuario de volta para a tela de login.
               </p>
               <hr />
@@ -159,7 +159,7 @@ export default function PortPizzaria(){
             <div className={styles.divText}>
               <span> 6 - Preencher e finalizar mesa:</span>
               <p>
-                Aqui temos os seletores onde o garçom/atendente 'anota' o pedido e o envia para a cozinha futuramente. 
+                Aqui temos os seletores onde o garçom/atendente seleciona o produto e envia o pedido para a cozinha futuramente. 
                 Essa pagina tem seletores para categoria e produto e botoes de adicionar produto, remover produto, finalizar mesa ou excluir mesa,
                 cada seletor e botao se mantem desativado até que o passo a passo correto é feito pelo garçom, o que torna o app muito indicativo
               </p>
@@ -177,7 +177,7 @@ export default function PortPizzaria(){
             <div className={styles.divTextMobile}>
               <span> 1 - Login:</span>
               <p>
-                Mesmo funcionamento da tela de login da web. Lembrando que aqui não temos opção de se cadastrar, para isso, se cadastre no aplicativo web(ou entre com email 'Teste@teste.com' e senha '123')
+                Mesmo funcionamento da tela de login da web. Lembrando que aqui não temos opção de se cadastrar, para isso, se cadastre no aplicativo web ou entre com email e senha (email: Teste@teste.com, senha: 123)
               </p>
             </div>
           </div>
@@ -189,7 +189,7 @@ export default function PortPizzaria(){
             <div className={styles.divTextMobile}>
               <span> 2 - Novo Pedido </span>
               <p>
-                Nessa tela você pode abrir o pedido, que ainda é um "rascunho", que só sera enviado para cozinha quando confirmado. Dê aqui o numero da mesa a ser atendida.
+                Nessa tela você pode abrir o pedido, que ainda é um rascunho, que só sera enviado para cozinha quando confirmado. Dê aqui o numero da mesa a ser atendida.
               </p>
             </div>
           </div>
@@ -201,7 +201,7 @@ export default function PortPizzaria(){
             <div className={styles.divTextMobile}>
               <span> 3 - Preencher e finalizar mesa:</span>
               <p>
-                Aqui temos os seletores onde o garçom/atendente 'anota' o pedido e o envia para a cozinha futuramente. 
+                Aqui temos os seletores onde o garçom/atendente anota o pedido e o envia para a cozinha futuramente. 
                 Essa pagina tem seletores para categoria e produto e botoes de adicionar produto, remover produto, finalizar mesa ou excluir mesa,
                 cada seletor e botao se mantem desativado até que o passo a passo correto é feito pelo garçom, o que torna o app muito indicativo
               </p>
@@ -215,7 +215,7 @@ export default function PortPizzaria(){
             <div className={styles.divTextMobile}>
               <span> 4 - finalizar mesa:</span>
               <p>
-                Finalizando o pedido ele aparecera em tempo real na pagina "dasboard" do app web. Teste e veja !
+                Finalizando o pedido ele aparecera em tempo real na pagina dasboard do app web. Teste e veja !
               </p>
             </div>
           </div>

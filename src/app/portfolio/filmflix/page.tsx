@@ -49,7 +49,7 @@ export default function PortPizzaria(){
             <div className={styles.divText}>
               <span>1 - Dashboard:</span>
               <p>
-                Uma lista de filmes que busca na api da 'The Movie DB' os filmes em cartaz no cinema, você pode acessar esses filmes e ver algumas informações sobre eles. Pode tambem favoritar filmes, o que salva eles no localstorage.
+                Uma lista de filmes que busca na api da The Movie DB os filmes em cartaz no cinema, você pode acessar esses filmes e ver algumas informações sobre eles. Pode tambem favoritar filmes, o que salva eles no localstorage.
               </p>
               <hr />
             </div>

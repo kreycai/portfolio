@@ -40,13 +40,12 @@ export type OrderItemProps = {
   }
 }
 
-export default function dashboard(props) {
+export default function Dashboard(props) {
   const {socket, isConnected} = useContext(AuthContext);
-  const apiClient = setupApiClient();
   const [orderList, setOrderList] = useState(props.params.data || []);
-
   const [modalItem, setModalItem] = useState<OrderItemProps[]>()
   const [modalVisible, setModalVisible] = useState(false)
+  const apiClient = setupApiClient();
   
 useEffect(()=>{
     //essa funçao cuida de atualizar o client que cria um pedido e que acaba de ser

@@ -1,13 +1,18 @@
 import { ReactNode } from "react"
 import { auth } from "../../../../utils/pizzaria/userAuth";
 import { setupApiServer } from "@/services/pizzaria/apiServer";
-import { GetServerSideProps } from "next";
+
+interface PortLayoutProps{
+  children: ReactNode,
+  params: any;
+}
+
 
 export const metadata = {
   title: 'Novo produto - Pizzaria'
 }
 
-export default async function Layout(props) {
+export default async function Layout(props: PortLayoutProps) {
     auth()
     const apiServer = setupApiServer()
     const response = await apiServer.get('/category')

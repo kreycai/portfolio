@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 
 import { FiX } from 'react-icons/fi'
 
-import { OrderItemProps } from '../../pages/dashboard'
+import { OrderItemProps } from '../../../app/(projetos)/pizzaria/dashboard/page'
 
 interface ModalOrderProps{
     isOpen: boolean;
