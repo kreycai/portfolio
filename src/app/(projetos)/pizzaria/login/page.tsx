@@ -20,18 +20,17 @@ export default function Home() {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [loadingAction, setLoadingAction] = useState(false);
 
   async function handleLogin(event: FormEvent) {
     event.preventDefault();
     
     if(email === '' || password === ''){
       toast.warning("Preencha todos os campos")  
-      
       return;
     }
 
-    setLoading(true);
+    setLoadingAction(true);
 
     let data = {
       email: email,
@@ -43,9 +42,8 @@ export default function Home() {
     if(!response){
       setEmail('')
       setPassword('')
+      setLoadingAction(false);
     }
-
-    setLoading(false);
   }
 
   return (
@@ -57,7 +55,7 @@ export default function Home() {
             <Input placeholder="Digite seu email" type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
             <Input placeholder="Sua senha" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
 
-            <Button type="submit">
+            <Button type="submit" loading={loadingAction}>
               Acessar
             </Button>
           </form>

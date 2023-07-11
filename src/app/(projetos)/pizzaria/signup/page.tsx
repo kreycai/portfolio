@@ -18,7 +18,7 @@ export default function Signup() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [loadingAction, setLoadingAction] = useState(false);
 
   async function handleSignUp(event: FormEvent){
     event.preventDefault();
@@ -27,7 +27,7 @@ export default function Signup() {
       return;
     }
 
-    setLoading(true);
+    setLoadingAction(true);
 
     let data = {
       name,
@@ -35,7 +35,7 @@ export default function Signup() {
       password
     }
     await signUp(data)
-    setLoading(false)
+    setLoadingAction(false)
   }
 
   return (
@@ -48,7 +48,7 @@ export default function Signup() {
             <Input placeholder="Digite seu nome" type="text" value={name} onChange={(e) => setName(e.target.value)}/>
             <Input placeholder="Digite seu email" type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
             <Input placeholder="Sua senha" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-            <Button type="submit" loading={loading}>
+            <Button type="submit" loading={loadingAction}>
               Cadastrar
             </Button>
           </form>

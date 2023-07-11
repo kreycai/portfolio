@@ -45,7 +45,8 @@ export default function OrderItem(){
     const [amount, setAmount] = useState('1')
     const [items, setItems] = useState<ItemsProps[]>([])
     const [totalOrder, setTotalOrder] = useState(0)
-    const [loading, setLoading] = useState(false)
+
+    const [loadingAction, setLoadingAction] = useState(false);
 
     useEffect(()=>{
         async function loadInfo(){
@@ -54,6 +55,9 @@ export default function OrderItem(){
         }
         loadInfo()
     }, [totalOrder])
+    useEffect(()=>{
+
+    }, [loadingAction])
 
     useEffect(()=>{
         async function loadProducts(){
@@ -72,15 +76,18 @@ export default function OrderItem(){
 
     async function handleCloseOrder(){
         try {
+            setLoadingAction(true);
             await api.delete('/order', {
                 params:{
                     order_id: order_id
                 }
             })
             route.push('/pizzaria/order')
+            setLoadingAction(false);
         } catch (error) {
             console.log("erro:", error);
             route.push('/pizzaria/order')
+            setLoadingAction(false);
         }
     }
 
@@ -96,6 +103,7 @@ export default function OrderItem(){
 
     async function handleAdd(){
         try {
+            setLoadingAction(true)
             const response = await api.post('/order/add',{
                 order_id: order_id,
                 product_id: product[productSelected].id,
@@ -111,15 +119,18 @@ export default function OrderItem(){
             }
             setItems(oldArray => [...oldArray, data])
             setTotalOrder(e => (Number(product[productSelected].price) * Number(amount)) + e)
+            setLoadingAction(false)
         } catch (error) {
             console.log("error:", error);
             route.push('/pizzaria/order')
             toast.warn("Por favor, tente novamente")
+            setLoadingAction(false)
         }
 
     }
 
     async function handleDeleteItem(item_id: string){
+        setLoadingAction(true);
         const response = await api.delete('/order/delete',{
             params:{
                 item_id: item_id
@@ -130,24 +141,21 @@ export default function OrderItem(){
             return(item.id !== item_id)
         })
         setItems(removeItems)
+        setLoadingAction(false);
     }
 
-    async function handleFinishOrder(){
+    async function handleFinishOrder(id){        
         try {
-            setLoading(true)
-            let header = document.getElementsByClassName(styles.button)[0] as HTMLElement
-            header.style.cursor = 'wait'
+            setLoadingAction(true)
             await api.put('/order/send', {
                 order_id: order_id
             })
             socket?.emit('message')
             route.push("/pizzaria/dashboard")
-
         } catch (error) {
             console.log("error:", error);
             route.push('/pizzaria/order')
             toast.warn("Por favor, tente novamente")
-            
         }
     }
     function handleModalOrder(){
@@ -168,7 +176,11 @@ export default function OrderItem(){
                 <div className={styles.header}>
                     <h2 className={styles.title}>Mesa {table}</h2>
                     {items.length === 0 && (
-                        <button onClick={handleCloseOrder}>
+                        <button 
+                        onClick={handleCloseOrder}
+                        disabled={loadingAction}
+                        style={loadingAction ? {cursor: 'wait'} : {cursor: 'pointer'}}
+                        >
                             <FiTrash2 size={28} color='#ff3f4b'/>
                         </button>
                     )}
@@ -224,15 +236,15 @@ export default function OrderItem(){
                     <button 
                     className={styles.buttonAdd} 
                     onClick={handleAdd} 
-                    disabled={productSelected == -1 || categorySelected == -1}
-                    style={{opacity: productSelected == -1 ? 0.3 : 1}}
+                    disabled={productSelected == -1 || categorySelected == -1 || loadingAction}
+                    style={{opacity: productSelected == -1 ? 0.3 : 1, cursor: loadingAction ? 'wait' : 'pointer'}} 
                     >
                         <p className={styles.buttonText}>+</p>
                     </button>
                     <button
                     className={styles.button}
-                    style={{opacity: items.length === 0 ? 0.3 : 1}}
-                    disabled={items.length === 0 || loading}
+                    style={{opacity: items.length === 0 ? 0.3 : 1, cursor: loadingAction ? 'wait' : 'pointer'}}
+                    disabled={items.length === 0 || loadingAction}
                     onClick={handleModalOrder}
                     >
                         <p className={styles.buttonText}>Avançar</p>
@@ -242,7 +254,7 @@ export default function OrderItem(){
                 <div style={{ marginTop: 24}} className={styles.divItems}>
                     {items.map((item)=>{
                         return(
-                            <ListItem key={item.id} data={item} deleteItem={handleDeleteItem} subValue={subProduct} />
+                            <ListItem key={item.id} data={item} deleteItem={handleDeleteItem} subValue={subProduct} buttonDesability={loadingAction} />
                         )
                     })}
                 </div>

@@ -7,11 +7,13 @@ import { api } from "@/services/pizzaria/apiClient";
 
 export default function Category() {
     const [name, setName] = useState('')
+    const [loadingAction, setLoadingAction] = useState(false);
 
     async function handleRegister(event: FormEvent) {
         event.preventDefault();
-
+        setLoadingAction(true)
         if(name === ''){
+            setLoadingAction(false)
             return;
         }
 
@@ -21,6 +23,7 @@ export default function Category() {
 
         toast.success("Categoria cadastrada com sucesso!")
         setName('')
+        setLoadingAction(false)
     }
 
   return (
@@ -37,7 +40,7 @@ export default function Category() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 />
-                <button type="submit">
+                <button type="submit" disabled={loadingAction} style={loadingAction ? {cursor: 'wait'} : {cursor: 'pointer'}}>
                     Cadastrar
                 </button>
             </form>

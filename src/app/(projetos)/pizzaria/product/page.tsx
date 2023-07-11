@@ -31,6 +31,8 @@ export default function Product(props){
     const [categories, setCategories] = useState(props.params.data || [])
     const [categorySelected, setCategorySelected] = useState(-1)
 
+    const [loadingAction, setLoadingAction] = useState(false);
+
     function handleFile(e: ChangeEvent<HTMLInputElement>){
         if(!e.target.files){
             return;
@@ -58,7 +60,7 @@ export default function Product(props){
 
     async function handleRegister(event: FormEvent){
         event.preventDefault();
-
+        setLoadingAction(true)
         try {
             const data = new FormData()
 
@@ -78,7 +80,7 @@ export default function Product(props){
             await apiClient.post('/product', data);
 
             toast.success('Cadastrado com sucesso!');
-
+            setLoadingAction(false)
         } catch (err) {
             console.log(err);
             toast.error("Erro ao cadastrar!")
@@ -130,7 +132,7 @@ export default function Product(props){
                         <input type="text" placeholder="Digite o nome do produto" className={styles.input} value={name} onChange={(e)=>setName(e.target.value)}/>
                         <input type="number" placeholder="Preço do produto" className={styles.input} value={price} onChange={(e)=>setPrice(e.target.value)} />
                         <textarea placeholder="Descreva seu produto..." className={styles.input} value={description} onChange={(e)=>setDescription(e.target.value)} />
-                        <button type="submit">Cadastrar</button>
+                        <button type="submit" disabled={loadingAction} style={loadingAction ? {cursor: 'wait'} : {cursor: 'pointer'}}>Cadastrar</button>
                     </form>
                 </main>
             </div>
