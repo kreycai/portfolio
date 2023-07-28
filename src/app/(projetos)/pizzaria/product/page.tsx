@@ -2,7 +2,6 @@
 import { useState, ChangeEvent, FormEvent, useEffect, ReactNode } from "react";
 import styles from './styles.module.scss';
 import { Header } from "@/components/pizzaria/Header";
-
 import { FiUpload } from 'react-icons/fi'
 
 import { setupApiClient } from "@/services/pizzaria/api";
@@ -32,6 +31,14 @@ export default function Product(props){
     const [categorySelected, setCategorySelected] = useState(-1)
 
     const [loadingAction, setLoadingAction] = useState(false);
+
+    useEffect(()=>{
+        async function loadInfo(){
+            const response = await setupApiClient().get('/category')
+            setCategories(response.data)
+        }
+        loadInfo()
+    },[])
 
     function handleFile(e: ChangeEvent<HTMLInputElement>){
         if(!e.target.files){

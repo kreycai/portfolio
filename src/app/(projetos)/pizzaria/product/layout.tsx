@@ -14,9 +14,9 @@ export const metadata = {
 
 export default async function Layout(props: PortLayoutProps) {
     auth()
-    const apiServer = setupApiServer()
-    const response = await apiServer.get('/category')
-    props.params.data = response.data
+    // const apiServer = setupApiServer()
+    // const response = await apiServer.get('/category')
+    // props.params.data = response.data
   return (
     <>
       {props.children} 
