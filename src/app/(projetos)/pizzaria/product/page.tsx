@@ -73,6 +73,7 @@ export default function Product(props){
 
             if(name === '' || price === '' || description === '' || imgAvatar === null || categorySelected == -1){     
                 toast.error("Preencha todos os campos!")
+                setLoadingAction(false)
                 return;
             }
             const formatPrice = price.replace(',','.')
@@ -91,6 +92,7 @@ export default function Product(props){
         } catch (err) {
             console.log(err);
             toast.error("Erro ao cadastrar!")
+            setLoadingAction(false)
         }
 
         setName('')
