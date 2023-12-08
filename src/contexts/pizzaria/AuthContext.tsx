@@ -66,7 +66,7 @@ export function AuthProvider({children}: AuthProviderProps){
             api.get('/me').then(response=>{
                 const {id, name, email} = response.data
                 setUser({id, name, email})
-                const socket = io('https://api-portfolio-v3zq.onrender.com');
+                const socket = io('https://api-portfolio-v3zq.onrender.com/');
                 setSocket(socket)
                 if(socket){
                     setIsConnected(true)

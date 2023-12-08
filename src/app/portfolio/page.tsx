@@ -25,7 +25,7 @@ export default function Portfolio(){
         <div className={styles.divImgPerfil}>
           <Image src={imgTeste} alt='Imagem perfil' className={styles.imgPerfil} />
         </div>
-        <div>
+        <div className={styles.parentintro}>
           <div className={styles.intro}>
             <h3 className={styles.introText}> - Olá, meu nome é Guilherme Reale</h3>
             <div style={{display: 'flex'}}>
@@ -34,12 +34,12 @@ export default function Portfolio(){
             <p>Fique a vontade para navegar pelos meus projetos.</p>
           </div>
           <div className={styles.divIcons}>
-            <div><TbBrandNextjs fontSize={50}/><p>Next.js</p></div>
-            <div><FaReact fontSize={50}/><p>React.js</p></div>
-            <div><AiOutlineHtml5 fontSize={50}/><p>HTML</p></div>
-            <div><FaSass fontSize={50}/><p>SASS</p></div>
-            <div><TbBrandTypescript fontSize={50}/><p>Typescript</p></div>
-            <div><SiExpress fontSize={50}/><p>Express.js</p></div>
+            <div><span><TbBrandNextjs/></span><p>Next.js</p></div>
+            <div><span><FaReact/></span><p>React.js</p></div>
+            <div><span><AiOutlineHtml5/></span><p>HTML</p></div>
+            <div><span><FaSass/></span><p>SASS</p></div>
+            <div><span><TbBrandTypescript/></span><p>Typescript</p></div>
+            <div><span><SiExpress/></span><p>Express.js</p></div>
           </div>
         </div>
       </div>
